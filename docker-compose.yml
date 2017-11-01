@@ -1,0 +1,15 @@
+---
+version: "2.3"
+services:
+  tomcat:
+    image: tomcat:8.5
+    ports:
+      - "8080:8080"
+    volumes:
+      - "./webapp:/usr/local/tomcat/webapps"
+    links:
+      - db
+  db:
+    image: mariadb
+    environment:
+      - MYSQL_RANDOM_ROOT_PASSWORD=yes
